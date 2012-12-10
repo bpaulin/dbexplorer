@@ -1,5 +1,28 @@
 <?php
+error_reporting(E_ALL ^ E_NOTICE);
+
 require_once('config.php');
+require_once('dbexplorer.class.php');
+
+$keyValue = '';
+if (isset($_POST['value'])) {
+	$keyValue = $_POST['value'];
+}
+$fieldValue = '';
+if (isset($_POST['field'])) {
+	$fieldValue = $_POST['field'];
+}
+$strictValue = 1;
+if (isset($_POST['strict'])) {
+	$strictValue = $_POST['strict'];
+}
+
+
+$dbe = new DbExplorer();
+
+$dbe->connect($host, $user, $pass, $base, $table);
+$dbe->describeTable();
+
 
 $db = new mysqli($host, $user, $pass, $base);
 
@@ -99,6 +122,9 @@ $query = "SELECT *
 	<?php endwhile;?>
 </div>
 <?php endif; ?>
+<?php
+	var_dump($dbe->select($fieldValue, $strictValue, $keyValue));
+?>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
 </body>

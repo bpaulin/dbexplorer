@@ -1,4 +1,4 @@
-config.php
+src/config.php
 .settings/
 .project
 .buildpath
