@@ -2,3 +2,4 @@ src/config.php
 .settings/
 .project
 .buildpath
+php-cs-fixer.phar
