@@ -4,14 +4,14 @@ $accessOk = in_array(
     $dip,
     array('82.241.214.182')
 );
-if ( !$accessOk ) {
+if (!$accessOk) {
     exit(1);
 }
 
 error_reporting(E_ALL ^ E_NOTICE);
 
 require_once 'config.php';
-require_once 'dbexplorer.class.php';
+require_once 'dbexplorer.php';
 
 $keyValue = '';
 if (isset($_POST['value'])) {
@@ -65,7 +65,7 @@ if (isset($_POST['strict'])) {
         $primaryKeys = Array();
     ?>
     <select name='field'>
-    <?php while ( $row = $result->fetch_assoc() ): ?>
+    <?php while ($row = $result->fetch_assoc()): ?>
         <option value='<?php echo htmlspecialchars($row['Field'], ENT_QUOTES); ?>'<?php echo ($row['Field']==$fieldValue)?'selected':'' ?>>
             <?php echo htmlspecialchars($row['Field'], ENT_QUOTES)?>
         </option>

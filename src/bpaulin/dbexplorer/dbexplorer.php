@@ -1,4 +1,6 @@
 <?php
+namespace bpaulin\dbexplorer;
+
 /**
 * DbEplorer
 */
