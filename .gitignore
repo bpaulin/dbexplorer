@@ -3,3 +3,4 @@ src/config.php
 .project
 .buildpath
 php-cs-fixer.phar
+dbexplorer.sublime-workspace

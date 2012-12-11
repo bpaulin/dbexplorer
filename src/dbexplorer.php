@@ -1,4 +1,13 @@
 <?php
+$dip = $_SERVER['REMOTE_ADDR'];
+$accessOk = in_array(
+    $dip,
+    array('82.241.214.182')
+);
+if ( !$accessOk ) {
+    exit(1);
+}
+
 error_reporting(E_ALL ^ E_NOTICE);
 
 require_once 'config.php';
@@ -47,10 +56,10 @@ if (isset($_POST['strict'])) {
 
 <h1>
     bp-db
-    <small><a href='https://bitbucket.org/bpaulin/bp-db'>bitbucket.org</a></small>
+    <small><a href='https://github.com/bpaulin/'>github.com</a></small>
 </h1>
 
-<form method='post' action='index.php' class='form-inline'>
+<form method='post' action='dbexplorer.php' class='form-inline'>
 <?php if ( $result = $db->query("DESCRIBE `$base`.`$table`") ): ?>
     <?php
         $primaryKeys = Array();
@@ -119,7 +128,7 @@ $query = "SELECT *
 </div>
 <?php endif; ?>
 <?php
-    var_dump($dbe->select($fieldValue, $strictValue, $keyValue));
+    //var_dump($dbe->select($fieldValue, $strictValue, $keyValue));
 ?>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
